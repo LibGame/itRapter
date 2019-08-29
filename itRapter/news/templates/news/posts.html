@@ -1,0 +1,148 @@
+{% extends "ShapeHtml/wrapper.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+
+Главная страница
+
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="container" >
+  <ul id="slides">
+    <li class="slide showing"><a href="/lessons_django/"><img style="height:240px; width:1060px;" src="https://sun9-36.userapi.com/c852220/v852220638/1abb40/-o7gE161SQ8.jpg"> </a></li>
+    <li class="slide"><a href="/lessons_java/"><img style="height:240px; width:1060px;" src="https://sun9-49.userapi.com/c852220/v852220624/1b258f/BYAVna8_IzY.jpg"></a> </li>
+    <li class="slide"><a href="/lessons_c/"><img style="height:240px; width:1060px;" src="https://sun9-44.userapi.com/c852220/v852220624/1b251e/8dfYaTkoLfk.jpg"> </a></li>
+  </ul>
+  <div  class="buttons">
+    <a style="display:block;
+margin:auto; text-align:center;" aligin="middle" class="controls" id="previous"> <i aligin="middle" class="glyphicon glyphicon-chevron-left" style="font-size:20px; color:white; "> </i> </a>
+
+    <a style="display:block;
+margin:auto; text-align:center; margin-left:10px;" aligin="middle" class="controls" id="pause"><i aligin="middle" class="glyphicon glyphicon-play" style="font-size:20px; color:white; "> </i></a>
+
+    <a style="display:block;
+margin:auto; text-align:center; margin-left:10px;" aligin="middle" class="controls" id="next"><i aligin="middle" class="glyphicon glyphicon-chevron-right" style="font-size:20px; color:white; "> </i></a>
+  </div>
+</div>
+<br>
+
+
+
+<div>
+    <div class=" col-lg-1 col-md-1  "></div>
+	<div style="background-color:#474747;
+	     display: inline-block; /* Строчно-блочный элемент */ display:block;
+margin:auto; text-align:center;
+	 min-height: 470px; height: auto; widht: 100% ;  " class="col-lg-3 col-md-3 col-sm-12 container">
+
+
+
+        <h2 aligin="middle">Поиск по Программам</h2>
+        <form action="{% url 'post_search' %}" method="get">
+            <input  style=" height:30px; min-width:10px; width:auto; border: 3px solid #242424; border-radius: 15px ; background-color: #8B8B8B;" type="text" name="search" value="">
+            <input style=" margin-left:30px; height: 30px ; min-width:10px; width:auto; border-radius: 30px ; background-color: #414141   ;  border: 3px solid #242424; " type="submit" value="Найти">
+        </form>
+
+        <h2 align="middle" style="border-top:3px solid #242424 ;" >Обезательно ПОКЛИКАЙ</h2>
+        <div style="border-top:3px solid #242424 ; " align="middle">
+
+<h2>Группа вк</h2> <a><img  src="{% static 'MainPage/image/вк.png' %}" > </a>
+<h2>Наш паттреон</h2>  <a><img  src="{% static 'MainPage/image/Патреон.png' %}" > </a>
+<h2>Канал на ютубе</h2> <a href="https://www.youtube.com/channel/UChnq246zZw47suB0P5aJx-g"><img  src="{% static 'MainPage/image/Ютуб.png' %}" > </a>
+
+
+    </div>
+    </div>
+
+
+    <div  class=" container col-lg-8 col-md-8">
+
+
+    {% for result in results %}
+        <div style="background-color:#474747;">
+          <div style="display:flex;">
+
+        {% with object_list=result %}
+              {{ result.body|truncatewords:5 }}
+            <p><img src="{{ MEDIA_URL }}{{ result.img.url }}"/></p>
+
+                 <a href="{% url 'article_detail' slug=result.slug %}" style="margin-left:20px;"> <h3> {{result.title}} </h3>
+                 <i  class="glyphicon glyphicon-eye-open" style="font-size:20px; color:white; "> {{ result.view }} {{result.date|date:"d-m-Y"}}</i> </a>
+
+        {% endwith %}
+
+
+          </div>
+          </div>
+<br>
+    {% endfor %}
+
+  {% for article in object_list  %}
+
+
+
+        <div class="colum-line" style=" background-color:#474747; min-height: 100px; height: auto;">
+
+              <div class="news-img"  style=" max-width: 100%; height: auto; ">
+                  <img style=" display:block; margin:auto; text-align:center;" src="{{ MEDIA_URL }}{{ article.img.url }}"/>
+              </div>
+
+                <div  style=" padding-left:20px; max-width:570px; width:auto; ">
+
+               <a href="{% url 'article_detail' slug=article.slug %}" style="margin-left:20px;"> <h3> {{article.title}} </h3>
+                   <i  class="glyphicon glyphicon-eye-open" style="font-size:20px; color:white; "> {{ article.view }} {{article.date|date:"d-m-Y"}}</i> </a>
+
+            <h1> Тегги |   {% for tag in articles_tag.tags.all %}
+            <a href="{% url  'post_tags_by_tag' tag.slug %}">
+            {{ tag.name }}
+            </a>
+            {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+</h1>
+
+    </div>
+
+
+          </div>
+
+
+
+        <br>
+    {% endfor %}
+</div>
+    <div
+style="display:block;
+margin:auto; text-align:center;"
+>
+{% if is_paginated %}
+<ul class="pagination">
+{% if page_obj.has_previous %}
+    <li>
+        <span><a href="?page={{ page_obj.previous_page_number }}">Previous</a></span>
+    </li>
+{% endif %}
+    <li class="">
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+    </li>
+{% if page_obj.has_next %}
+    <li>
+        <span><a href="?page={{ page_obj.next_page_number }}">Next</a></span>
+    </li>
+{% endif %}
+</ul>
+{% else %}
+    <h3>Your File Exam</h3>
+    <p>File not yet available</p>
+{% endif %}
+
+</div>
+</div>
+
+
+{% endblock %}
+

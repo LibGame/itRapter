@@ -1,0 +1,58 @@
+{% extends "ShapeHtml/wrapper.html" %}
+
+{% block title %}
+
+Java Уроки
+
+{% endblock %}
+
+
+{% block content %}
+
+<div>
+
+
+    {% for jar_details in JarList  %}
+
+<div class="container" style="background-color:#474747; margin-top:30px;" align="middle">
+
+          <p><img src="{{ MEDIA_URL }}{{ jar_details.imgJar.url }}"/></p>
+
+             <h4><a href="{% url 'jar_detail'  slug=jar_details.slug %}">{{ jar_details.titleJar }}</a></h4>
+
+          <h3 align="right">{{jar_details.datesJar|date:"d-m-Y"}}</h3>
+
+</div>
+    {% endfor %}
+
+
+    <div
+style="display:block;
+margin:auto; text-align:center;"
+>
+{% if is_paginated %}
+<ul class="pagination">
+{% if page_obj.has_previous %}
+    <li>
+        <span><a href="?page={{ page_obj.previous_page_number }}">Previous</a></span>
+    </li>
+{% endif %}
+    <li class="">
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+    </li>
+{% if page_obj.has_next %}
+    <li>
+        <span><a href="?page={{ page_obj.next_page_number }}">Next</a></span>
+    </li>
+{% endif %}
+</ul>
+{% else %}
+    <h3>Your File Exam</h3>
+    <p>File not yet available</p>
+{% endif %}
+
+</div>
+</div>
+
+
+{% endblock %}

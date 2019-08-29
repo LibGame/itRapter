@@ -1,0 +1,540 @@
+ body {
+  background-color: #626262;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: #555;
+
+  -webkit-font-soothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+
+
+}
+
+
+
+h2,h4,h5,h6{
+  font-family: "Lato" , sans-serif;
+  font-weight: 300;
+  color:#DEDEDE;
+}
+
+
+h1{
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  color:white;
+}
+
+
+p{
+  line-height: 28px;
+  margin-bottom: 25px;
+}
+
+.centered{
+  text-align: center;
+}
+
+a{
+
+  color:#999999;
+  font-family: "Oswald" , sans-serif;
+  font-size: 30px;
+}
+
+
+
+
+
+a:hover, a:focus {
+
+	color: white ;
+	text-decoration: none ;
+	outline: 0;
+
+
+}
+
+
+.li:hover , .li:active{
+  background-color: #414141 ;
+}
+
+.li{
+
+    margin-top: 15px;
+
+}
+
+hr{
+	display: block ;
+	height: 1px ;
+	border: 0 ;
+	border: 1px solid #ccc;
+	margin: 1em 0 ;
+	padding: 0 ;
+
+}
+
+.navbar{
+
+	font-weight: 800 ;
+	font-size: 14px ;
+	padding-top: 15px ;
+	padding-bottom: 15px ;
+
+}
+.navbar-inverse {
+  position: relative;
+
+    margin-bottom:-20%;
+
+
+  background:#242424;
+}
+.navbar-inverse .navbar-brand {
+
+	color: #999 ;
+	font-weight: bolder ;
+	font-size: 50px ;
+	letter-spacing: 1px ;
+
+}
+
+.form-control{
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius:4px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset;
+  color: #555 ;
+  display: block;
+  font-size: 14px;
+  height: 34px;
+  line-height: 1.42857;
+  padding: 6px 12px;
+  width: 50%;
+  margin-top: 20px;
+  margin-left: 25%;
+}
+
+#headrwrap{
+    margin-top: 200px;
+
+}
+
+
+#reg{
+
+    margin-left: 50px ;
+
+}
+
+
+
+#preloader {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 999;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      background: #fbfbfb url('https://acegif.com/wp-content/uploads/loading-4.gif') no-repeat center center;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 2s linear;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+.scroll {
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+    height: 350px;
+    width: 220px ;
+    margin-left: 85% ;
+	z-index: 8000;
+	background: #C1C1ED;
+    border: 3px solid #000047;
+    border-radius: 10px ;
+
+	transition: all .2s ease-in-out;
+    transform: translateY(-500px);
+}
+
+.hiddens {
+    transform: translateY(0px);
+}
+
+body {
+  height: 1000px;
+}
+
+#Main{
+
+    margin-left: 17% ;
+
+}
+
+#HelpB{
+
+    margin-left: 40px ;
+    color: white ;
+
+}
+
+#HelpB:hover{
+
+
+    background-color: #0000A9 ;
+
+}
+
+#center{
+  position: absolute;
+  left: 65%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+
+    margin-top:5px;
+    margin-left:10px;
+    position: relative;
+    display: inline-block;
+}
+#lessons{
+    color:#9D9D9D;
+}
+#lessons:hover{
+    color:white;
+}
+
+.dropbtn:hover{
+    background-color: #414141 ;
+
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #8E8989;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #414141;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+
+#myBtn {
+  cursor: pointer;
+}
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 300px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+
+.modal-content {
+    position: relative;
+    background-color: #E1BEE7;
+    margin: auto;
+    padding: 0;
+    border: 5px solid #C7C7C7;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+
+@-webkit-keyframes animatetop {
+    from {top:-500px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-500px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+
+.close {
+	font-size:40px;
+    color: red;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #A6A6A6;
+    color: white;
+}
+
+.modal-body {
+
+	padding: 2px 16px;
+    background-color: #A6A6A6;
+
+}
+
+
+
+
+
+
+#myBtn1 {
+
+  cursor: pointer;
+
+}
+
+
+.modal1 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 300px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+
+.modal-content1 {
+    position: relative;
+    background-color: #E1BEE7;
+    margin: auto;
+    padding: 0;
+    border: 5px solid #C7C7C7;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+
+@-webkit-keyframes animatetop {
+    from {top:-500px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-500px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+
+.close1 {
+	font-size:40px;
+    color: red;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close1:hover,
+.close1:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header1 {
+    padding: 2px 16px;
+    background-color: #A6A6A6;
+    color: white;
+}
+
+.modal-body1 {
+
+	padding: 2px 16px;
+    background-color: #A6A6A6;
+
+}
+
+
+#Entered{
+  height: 500px;
+}
+
+#EnterButton{
+  margin-top: 50px;
+  margin-left: 250px;
+}
+
+
+#enterVK{
+  margin-left: 160px;
+}
+
+#ForgetPasswords{
+  margin-left:240px;
+}
+
+#ForgetPasswords:hover{
+  color: #DE4E5F;
+  text-decoration:underline;
+}
+
+
+#containerEMail{
+  margin-left: 25%;
+
+}
+
+.EnterText{
+  margin-left: 150px;
+}
+
+.close{
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+#RegisterButton{
+  margin-left: 180px;
+  margin-top: 30px;
+}
+
+#H1changeColor{
+    color:white;
+}
+
+#next-block{
+    width:300px;
+    height:400px;
+    margin-left:50px;
+    float:left;
+}
+
+
+#Profile{
+    width:300px;
+    height:100px;
+    border-color:#41AFDE;
+    border:2px;
+
+}
+
+#log:hover{
+	color:#7AC8DE;
+}
+
+#Reg:hover{
+	color:#7AC8DE;
+}
+
+
+.blockButton{
+    position:relative;
+    width:250px
+}
+.blockButton>input{
+    position:absolute;
+    width: 100%;
+    padding:10px;
+    display:block
+}
+.blockButton>a{
+    position:absolute;
+    top:10px;
+    right:0;
+    color:#000
+}
+
+
+#Comment{
+    weight:500px;
+    height:300px;
+}
+
+#imgDown{
+	padding-top:90px;
+}
+
+#Comment{
+	margin-left:22%;
+	word-wrap:break-word;
+	width:700px;
+}
+
+#CommentHead{
+	height:90px;
+	padding-bottom:30px;
+}
+
+#Ratings{
+  display: flex;
+
+}
+
+#RatingImg{
+	margin-left: 30px ;
+	display: flex ;
+
+}
+
+
+

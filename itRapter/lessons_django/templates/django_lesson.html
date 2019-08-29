@@ -1,0 +1,70 @@
+{% extends "ShapeHtml/wrapper.html" %}
+
+{% block title %}
+
+{{django_details.titleDjango}}
+
+{% endblock %}
+
+{% block content %}
+{% load staticfiles %}
+
+<div style="padding-left:20px; padding-top:10px; padding-right:20px; background-color:#474747; ">
+
+        <h1 align="middle" style="color:white;" class=" text-info">{{django_details.titleDjango}}</h1>
+    <div style="color:#C4C4C4;">
+
+         {{django_details.textDjango|safe|linebreaks}}
+        </div>
+
+        <h3 align="right" class=" text-info"> Опубликованно: {{django_details.datesDjango|date:"d-m-Y в H:i"}}</h3>
+
+
+    <p class="post-meta">
+        ТЕГИ:
+            <a href=""> {{ tag.name }}</a> |
+    </p>
+
+
+</div>
+
+
+<form action="" method="post">
+  {% csrf_token %}
+
+   <div style=" margin-left: 35% ; border: 3px solid #4242A3; border-radius: 15px; width: 400px ; " > <br> <br>  {{ comment_form }}
+
+     <br>
+
+     <input type="submit" value="оставить коммент">
+
+     <br>
+
+   </div>
+
+             {% if comments %}
+    {% for comment in comments %}
+  	<div class="container" >
+    <div class="panel panel-default" style="color: #4363A3 ;" id="Comment">
+      <div style="color: #4363A3 ;"  class="panel-heading" id="CommentHead">
+          <h1>{{ comment.nameDjango }}</h1>
+      </div>
+      <div class="panel-body" >
+          <h3> {{ comment.textCommentDjango }}</h3>
+
+        <br>
+        <br>
+        <br>
+
+          <h3 align="right"> {{ comment.datesCommentDjango }}</h3>
+      </div>
+    </div>
+	</div>
+    {% endfor %}
+  {% endif %}
+
+</form>
+
+
+
+{% endblock %}

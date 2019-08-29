@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="witdh=device, initial-scale=1.0">
+
+
+    <title>
+
+        {% block title %}
+
+
+
+        {% endblock %}
+
+    </title>
+      {% load staticfiles %}
+ <link rel="shortcut icon" href="{% static 'MainPage/image/logo.ico' %}" type="image/x-icon">
+    <!-- Latest compiled and minified CSS -->
+
+<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}"type="text/css">
+
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+
+<script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+<script src="https://yastatic.net/share2/share.js"></script>
+
+
+  </head>
+
+
+
+  <body>
+
+  <style>
+
+      img {
+    max-width: 100%;
+    height: auto;
+}
+
+.colum-line {
+  display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+  .colum-line{
+  display:block;
+  }
+
+  .news-img img{
+      max-width: 100%;
+    height: auto;
+  }
+}
+
+#slides{
+    position: relative;
+    height: 300px;
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+
+.slide{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.showing{
+    opacity: 1;
+    z-index: 2;
+}
+
+
+.controls{
+    display: none;
+}
+
+
+/*
+non-essential styles:
+just for appearance; change whatever you want
+*/
+
+.slide{
+    font-size: 40px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #333;
+    color: #fff;
+
+  background-size: cover;
+}
+
+
+.controls{
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 20px 0px;
+  font-size: 20px;
+  cursor: pointer;
+  border: 2px solid #fff;
+  margin: 10px 0px 0px 10px;
+  width: 70px;
+}
+
+.controls:hover,
+.controls:focus{
+  background: #eee;
+  color: #333;
+}
+
+.container{
+  position: relative;
+}
+
+.buttons{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 10;
+  font-size: 0px;
+}
+
+
+  </style>
+
+   <div class="row">
+    <div class="col-xs-12">
+
+      <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/" style="margin-bottom:30px;"> itRapt<i class="glyphicon glyphicon-off"></i>R
+    <h5 style="color:#999999;" align="middle">Мы решаем ваши проблемы!</h5>
+
+        </a>
+      </div>
+      <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right" >
+
+           <li class="li"><a href="/news/">Главная</a></li>
+          <li class="li"><a href="/programms/">Программы</a></li>
+          <li class="li"><a href="/aboutUs">О нас</a></li>
+
+        <div class="dropdown">
+        <li class="li dropbtn "><a id="lessons" href="/news/">Уроки</a></li>
+        <div class="dropdown-content">
+        <a href="/lessons_django/">Django</a>
+        <a href="/lessons_c/">C++/C#</a>
+        <a href="/lessons_java/">Java</a>
+        </div>
+        </div>
+            {% if user.is_authenticated %}
+                 <li class="li"><a href="/cabinet/">Профиль</a></li>
+            {% endif %}
+
+        </ul>
+
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="headerwrap">
+    <div class="container">
+
+    </div>
+  </div>
+
+  </div>
+                <!-- Сообщество -->
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?162"></script>
+
+<!-- VK Widget -->
+<div id="vk_community_messages"></div>
+<script type="text/javascript">
+VK.Widgets.CommunityMessages("vk_community_messages", 127607773, {tooltipButtonText: "Есть вопрос? Задавай сюда !!!"});
+</script>
+                <!-- Конец сообщества -->
+
+
+   <div id="preloader"></div>
+
+
+
+
+<!-- Шапка -->
+
+
+
+
+
+    <div id="headrwrap">
+        <div >
+            <div class="col-md-9">
+            {% block content %}
+                <!-- Put this div tag to the place, where the Comments block will be -->
+            {% endblock %}
+            </div>
+
+
+            <div class="col-md-2" style="background-color:#626262; border-radius:5px; " >
+
+                <br>
+
+            <div style="background-color:#474747; ">
+
+
+            {% if user.is_authenticated %}
+
+
+
+            <a href="/cabinet/"><img alt="img" width="179" height="218" style=" display:block;
+margin:auto; text-align:center;" src="{% static 'MainPage/image/ava.png' %}" > </a>
+            <h2 style="color:white; text-align:center;"> {{ user.username }} </h2>
+            <a aligin="middle" href="/logout/"> <img     style="  display: block;
+              margin: 0 auto; " src="{% static 'MainPage/image/Выход.png' %}" >  </a>
+
+            {% else %}
+
+            <a  href="#"  id="myBtn"> <img style="  display: block;
+              margin: 0 auto;" src="{% static 'MainPage/image/Войти.png' %}" >  </a>
+            <a href="#" id="myBtn1" class="Register"> <img  style="  display: block;
+              margin: 0 auto;" src="{% static 'MainPage/image/Регистр.png' %}" >  </a>
+
+
+                  <div id="myModal1" class="modal1">
+
+  <div class="modal-content1">
+    <div class="modal-header1">
+      <span class="close1">X</span>
+      <h2 align="middle">РЕГИСТРАЦИЯ</h2>
+    </div>
+    <div class="modal-body1">
+<div align="middle">
+
+{% for field in form %}
+    <h1>{{ field.errors }}</h1>
+{% endfor %}
+<form method="post" action="{% url 'register' %}">
+    {% csrf_token %}
+    <h3>Логин</h3><input  style=" border: 3px solid #4242A3; border-radius: 15px ; " type="text" name="username" value="{{ username }}"> <br>
+    <h3>Почта</h3><input  style=" border: 3px solid #4242A3; border-radius: 15px ; "  type="email" name="email" value="{{ email }}"> <br>
+    <h3>Пароль</h3><input  style=" border: 3px solid #4242A3; border-radius: 15px ; " type="password" name="password1" value="{{ password1 }}"> <br>
+    <h3>Повторите пароль</h3><input  style=" border: 3px solid #4242A3; border-radius: 15px ; " type="password" name="password2" value="{{ password2 }}"> <br>  <br>  <br>
+    <input style=" height: 50px ; width:130px; border-radius: 30px ; background-color: #8383D0;  border: 3px solid #4242A3; margin-right:10px ; " type="submit" name="submit" value="Регистрация">
+</form>
+  </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+  <div id="myModal" class="modal">
+
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">X</span>
+    <h2  align="middle">АВТОРИЗАЦИЯ</h2>
+    </div>
+    <div class="modal-body">
+ <div align="middle">
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <h1> Логин </h1> <br>
+        <input style=" border: 3px solid #4242A3; border-radius: 15px ; " type="text" name="username"> <br>
+        <h1> Пороль </h1> <br>
+        <input style=" border: 3px solid #4242A3; border-radius: 15px; " type="password" name="password"> <br> <br> <br>
+        <input style=" height: 50px ; width:130px; border-radius: 30px ; background-color: #8383D0   ;  border: 3px solid #4242A3; " type="submit" value="Войти"> <br> <br> <br> <br>
+    </form>
+
+    {% if form.non_field_errors %}
+        <p>Вы ввели неверные данные</p>
+    {% endif %}
+
+</div>
+    </div>
+  </div>
+
+</div>
+
+            {% endif %}
+            </div>
+
+            <br>
+
+                <div style="background-color:#474747; padding-top:10px; min-height: 320px; height: auto; widht: 100% ;">
+<div style="display:block;
+margin:auto; text-align:center;" id="vk_groups"></div>
+</div>
+            <div style="background-color:#474747; padding-left:10px; min-height: 500px; height: auto; widht: 100% ;">
+
+
+<!-- VK Widget -->
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?162"></script>
+
+<!-- VK Widget -->
+
+<script type="text/javascript">
+VK.Widgets.Group("vk_groups", {mode: 4, width: "200", height: "300", color1: 'B2B2B2', color2: 'F6F6F6', color3: 'F6F6F6'}, 185356429);
+</script>
+
+
+
+                <h1>Новости За Неделю</h1>
+
+            {% for top in articles_top %}
+            <a href="{% url 'article_detail' top.pk %}"> <h3 onmouseover="this.style.color='white';" onmouseout="this.style.color='#999999';" id="TopArticleHover"  style="  font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+             "> {{ top.title }} </h3> </a>
+            {%  endfor %}
+
+            {% for top in programms_top %}
+            <a href="{% url 'article_detail' top.pk %}"> <h3 onmouseover="this.style.color='white';" onmouseout="this.style.color='#999999';" id="TopArticleHover"  style="  font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+             "> {{ top.title }} </h3> </a>
+            {%  endfor %}
+
+            </div>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+    </div>
+
+<div id="myLogin" class="modal fade">
+
+
+    <h1>Авторизируйтеся</h1>
+
+    <div class="container" align="middle">
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <h1> Логин </h1> <br>
+        <input style=" border: 3px solid #4242A3; border-radius: 15px ; " type="text" name="username"> <br>
+        <h1> Пороль </h1> <br>
+        <input style=" border: 3px solid #4242A3; border-radius: 15px; " type="password" name="password"> <br> <br> <br>
+        <input style=" height: 50px ; width:130px; border-radius: 30px ; background-color: #8383D0   ;  border: 3px solid #4242A3; " type="submit" value="Войти"> <br> <br> <br> <br>
+    </form>
+
+    {% if form.non_field_errors %}
+        <p>Вы ввели неверные данные</p>
+    {% endif %}
+
+</div>
+
+
+</div>
+
+
+<script type="text/javascript">
+
+function loadData() {
+return new Promise((resolve, reject) => {
+setTimeout(resolve, 2000);
+})
+}
+
+loadData()
+.then(() => {
+let preloaderEl = document.getElementById('preloader');
+preloaderEl.classList.add('hidden');
+preloaderEl.classList.remove('visible');
+});
+
+
+var controls = document.querySelectorAll('.controls');
+for(var i=0; i<controls.length; i++){
+    controls[i].style.display = 'inline-block';
+}
+
+var slides = document.querySelectorAll('#slides .slide');
+var currentSlide = 0;
+var slideInterval = setInterval(nextSlide,3000);
+
+function nextSlide(){
+    goToSlide(currentSlide+1);
+}
+
+function previousSlide(){
+    goToSlide(currentSlide-1);
+}
+
+function goToSlide(n){
+    slides[currentSlide].className = 'slide';
+    currentSlide = (n+slides.length)%slides.length;
+    slides[currentSlide].className = 'slide showing';
+}
+
+
+var playing = true;
+var pauseButton = document.getElementById('pause');
+
+function pauseSlideshow(){
+    pauseButton.innerHTML = '&#9658;'; // play character
+    playing = false;
+    clearInterval(slideInterval);
+}
+
+function playSlideshow(){
+    pauseButton.innerHTML = '&#10074;&#10074;'; // pause character
+    playing = true;
+    slideInterval = setInterval(nextSlide,3000);
+}
+
+pauseButton.onclick = function(){
+    if(playing){ pauseSlideshow(); }
+    else{ playSlideshow(); }
+};
+
+var next = document.getElementById('next');
+var previous = document.getElementById('previous');
+
+next.onclick = function(){
+    pauseSlideshow();
+    nextSlide();
+};
+previous.onclick = function(){
+    pauseSlideshow();
+    previousSlide();
+};
+
+
+  var modal = document.getElementById('myModal');
+
+
+var btn = document.getElementById("myBtn");
+
+
+var span = document.getElementsByClassName("close")[0];
+
+
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+
+
+  var modal1 = document.getElementById('myModal1');
+
+
+var btn1 = document.getElementById("myBtn1");
+
+
+var span1 = document.getElementsByClassName("close1")[0];
+
+
+btn1.onclick = function() {
+    modal1.style.display = "block";
+}
+
+
+span1.onclick = function() {
+    modal1.style.display = "none";
+}
+
+
+window.onclick = function(event) {
+    if (event.target == modal1) {
+        modal1.style.display = "none";
+    }
+}
+
+
+
+</script>
+
+  	<script type="text/javascript" src="js/script.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,57 @@
+{% extends "ShapeHtml/wrapper.html" %}
+
+{% block title %}
+
+{{article_details.title}}
+
+{% endblock %}
+
+
+{% block content %}
+{% load staticfiles %}
+
+<style>
+
+          img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+
+<div>
+    <div style=" width:100%; height:auto; padding-left:20px; padding-top:10px; padding-right:20px; background-color:#474747;">
+        <h1 align="middle" style="color:white;" class=" text-info">{{article_details.title}}</h1>
+        <h3 style="color:white;" align="right"> Не забудь поделиться! <div  class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,twitter,digg,reddit,linkedin,tumblr,viber,whatsapp,skype,telegram"></div> </h3>
+
+
+        <div style="color:#C4C4C4;"> {{article_details.post|safe|linebreaks}}  </div>
+        <h3 align="right" class=" text-info"> Опубликованно: {{article_details.date|date:"d-m-Y в H:i"}}</h3>
+
+
+    {% for tag in article_details.tags.all %}
+        <a href="{% url  'post_tags_by_tag' tag.slug %}">
+            {{ tag.name }}
+        </a>
+        {% if not forloop.last %}, {% endif %}
+    {% endfor %}
+
+
+
+</div>
+</div>
+
+<!-- Put this script tag to the <head> of your page -->
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?162"></script>
+
+<script type="text/javascript">
+  VK.init({apiId: 7103303, onlyWidgets: true});
+</script>
+
+<!-- Put this div tag to the place, where the Comments block will be -->
+<div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
+</script>
+
+{% endblock %}
+<!--{% url 'post_list_by_tag' tag.slug %}-->

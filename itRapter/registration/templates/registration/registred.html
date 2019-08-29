@@ -1,0 +1,26 @@
+{% extends "ShapeHtml/wrapper.html" %}
+
+{% block title %}
+
+Регистрация
+
+{% endblock %}
+
+{% block content %}
+<div class="container" align="middle">
+
+{% for field in form %}
+    <h1>{{ field.errors }}</h1>
+{% endfor %}
+<form method="post" action="{% url 'register' %}">
+    {% csrf_token %}
+    <h3>Логин</h3><input  style=" border: 3px solid #4242A3; border-radius: 15px ; " type="text" name="username" value="{{ username }}"> <br>
+    <h3>Почта</h3><input  style=" border: 3px solid #4242A3; border-radius: 15px ; "  type="email" name="email" value="{{ email }}"> <br>
+    <h3>Пароль</h3><input  style=" border: 3px solid #4242A3; border-radius: 15px ; " type="password" name="password1" value="{{ password1 }}"> <br>
+    <h3>Повторите пароль</h3><input  style=" border: 3px solid #4242A3; border-radius: 15px ; " type="password" name="password2" value="{{ password2 }}"> <br>  <br>  <br>
+    <input style=" height: 50px ; width:130px; border-radius: 30px ; background-color: #8383D0;  border: 3px solid #4242A3; margin-right:10px ; " type="submit" name="submit" value="Регистрация">
+</form>
+  </div>
+
+
+{% endblock %}

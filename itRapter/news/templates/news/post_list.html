@@ -1,0 +1,5 @@
+{% load counter %}
+
+{% for article in object_list  %}
+    <h3>{% page_hits article.get_absolute_url %}</h3>
+{% endfor %}

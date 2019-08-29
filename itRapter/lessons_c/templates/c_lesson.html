@@ -1,0 +1,31 @@
+{% extends "ShapeHtml/wrapper.html" %}
+
+{% block title %}
+
+{{django_details.titleC}}
+
+{% endblock %}
+
+{% block content %}
+{% load staticfiles %}
+
+<div style="padding-left:20px; padding-top:10px; padding-right:20px; background-color:#474747; ">
+
+        <h1 align="middle" style="color:white;" class=" text-info">{{c_details.titleC}}</h1>
+    <div style="color:#C4C4C4;">
+
+         {{ c_details.textC|safe|linebreaks }}
+        </div>
+
+        <h3 align="right" class=" text-info"> Опубликованно: {{c_details.datesC|date:"d-m-Y в H:i"}}</h3>
+
+
+    <p class="post-meta">
+        ТЕГИ:
+            <a href=""> {{ tag.name }}</a> |
+    </p>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "ShapeHtml/wrapper.html" %}
+
+{% block title %}
+
+Авторизация
+
+{% endblock %}
+<div id="myLogin">
+
+    <h1>Авторизируйтеся</h1>
+
+    <div class="container" align="middle">
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <h1> Логин </h1> <br>
+        <input style=" border: 3px solid #4242A3; border-radius: 15px ; " type="text" name="username"> <br>
+        <h1> Пороль </h1> <br>
+        <input style=" border: 3px solid #4242A3; border-radius: 15px; " type="password" name="password"> <br> <br> <br>
+        <input style=" height: 50px ; width:130px; border-radius: 30px ; background-color: #8383D0   ;  border: 3px solid #4242A3; " type="submit" value="Войти"> <br> <br> <br> <br>
+    </form>
+
+    {% if form.non_field_errors %}
+        <p>Вы ввели неверные данные</p>
+    {% endif %}
+
+</div>
+</div>
+
+

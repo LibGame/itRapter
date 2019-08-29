@@ -1,0 +1,104 @@
+{% extends "ShapeHtml/wrapper.html" %}
+{% load staticfiles %}
+
+{% block title %}
+
+Программы
+
+{% endblock %}
+
+{% block content %}
+
+
+
+<div>
+    <div class="col-lg-1 col-md-1"></div>
+	<div style="background-color:#474747; min-height: 470px; height: auto; widht: 100% ;  " class="col-lg-3 col-md-3 container">
+
+        <h2 align="middle" style="border-top:3px solid #242424 ;" >Обезательно ПОКЛИКАЙ</h2>
+        <div style="border-top:3px solid #242424 ; " align="middle">
+
+
+            <h2>Группа вк</h2> <a><img  src="{% static 'MainPage/image/вк.png' %}" > </a>
+<h2>Наш паттреон</h2>  <a><img  src="{% static 'MainPage/image/Патреон.png' %}" > </a>
+<h2>Канал на ютубе</h2> <a href="https://www.youtube.com/channel/UChnq246zZw47suB0P5aJx-g"><img  src="{% static 'MainPage/image/Ютуб.png' %}" > </a>
+
+
+    </div>
+    </div>
+
+
+
+    <div  class="col-lg-1 col-md-1"></div>
+    <div  class=" container col-lg-8 col-md-8">
+
+
+    {% for result in results %}
+            <div style="background-color:#474747;"  id="next-block">
+                          <div style="background-color:#323232;">
+                  <p><img src="{{ MEDIA_URL }}{{ result.img.url }}"/></p>
+
+          </div>
+ <div>
+
+        {% with object_list=result %}
+            <h4><a href="{% url 'article_detailProgramms' slug=result.slug %}">{{ result.title}}</a></h4>
+            {{ result.body|truncatewords:5 }}
+        {% endwith %}
+
+
+          </div>
+          </div>
+<br>
+    {% endfor %}
+
+    {% for object in object_list  %}
+
+
+
+        <div style="background-color:#474747;">
+          <div style="display:flex; ">
+
+        <div align="middle" style="min-width:300px; width:auto; ">
+             <p align="middle" style="margin-left:30px;"><img src="{{ MEDIA_URL }}{{ object.previewPrograms.url }}"/></p>
+        </div>
+
+              <h4 style="margin-left:30px;"><a href="{% url 'article_detailProgramms' slug=object.slug %}">{{ object.title }}</a></h4>
+
+          </div>
+        </div>
+
+        <br>
+    {% endfor %}
+</div>
+</div>
+
+<div
+style="margin-left:300px;"
+>
+{% if is_paginated %}
+<ul  class="pagination">
+{% if page_obj.has_previous %}
+    <li>
+        <span><a href="?page={{ page_obj.previous_page_number }}">Previous</a></span>
+    </li>
+{% endif %}
+    <li class="">
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+    </li>
+{% if page_obj.has_next %}
+    <li>
+        <span><a href="?page={{ page_obj.next_page_number }}">Next</a></span>
+    </li>
+{% endif %}
+</ul>
+{% else %}
+    <h3>Your File Exam</h3>
+    <p>File not yet available</p>
+{% endif %}
+
+</div>
+
+
+
+{% endblock %}

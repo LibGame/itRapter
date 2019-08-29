@@ -1,0 +1,121 @@
+{% extends "ShapeHtml/wrapper.html" %}
+
+{% block title %}
+
+{{ article_details.titleProg }}
+
+{% endblock %}
+
+{% load staticfiles %}
+
+
+{% block content %}
+<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+
+    <div class="col-xs-0 col-md-1  col-xl-1 col-sm-0"></div>
+    <div style="display: flex; flex-direction: column-reverse; padding-bottom:100px;"  class="col-xs-0 col-md-2 col-xl-2 col-lg-2 col-0">
+
+<div style="border-radius:5px; background-color:#474747; ">
+    <div style="border-bottom:3px solid #4242A3;;">
+    <h1 style="margin-left:40px;"> Софт для вас </h1>
+    </div>
+
+    {% for prog in top_prog %}
+
+        <a href="{% url 'article_detailProgramms' prog.pk %}" > <h3 style="margin-left:7px; ">{{ prog.title}}</h3> </a>
+
+    {% endfor %}
+</div>
+
+<br>
+
+
+<div style="border-radius:5px; background-color:#474747;">
+
+    <div style="border-bottom:3px solid #4242A3;;">
+    <h1 style="margin-left:40px; "> Топ Статей </h1>
+    </div>
+
+    {% for tops in top_art %}
+
+        <a href="{% url 'article_detailProgramms' tops.pk %}"><h3  style="margin-left:7px; "> {{ tops.title }} </h3></a>
+
+    {% endfor %}
+</div>
+
+
+
+    </div>
+
+    <div class="col-md-9 " style=" padding-left:20px; padding-top:10px; padding-right:20px; background-color:#474747;">
+        <div>
+             <td><h1 align="middle"> {{article_details.title}} </h1></td>
+          </div>
+          <div style="display: flex ;">
+              <div class="container">
+              <!--<img style="" src="{% static 'MainPage/image/IMG_20171101_184550.jpg' %}" >-->
+
+                  </div>
+
+              <div class="container" style="display: flex ;">
+
+          </div>
+
+          </div>
+
+                     <div style="color:#C4C4C4;">    {{article_details.storyPrograms|safe|linebreaks}}           </div>
+
+                  <a style="margin-left:35%;"  href="{{article_details.uploadPrograms}}"> <img src="{% static 'MainPage/interfaceImage/button_download.png' %}" ></a>
+
+            <div>
+            <b class="spoiler-title" style="cursor:pointer; "> <h2 align="middle" style=" color:white;">Почему у нас безопасно скачивать| Показать/скрыть </h2> </b>
+            <div class="spoiler-body" style="    display:none;
+                background:#f1f1f1;
+            ">
+
+                <ul>
+                    <li> 1. Все сылки на скачку мы берем с видео роликов на ютуб с большим количеством лайков и просмотров </li>
+                    <li> 2. Все сылки мы сами проверяем и большинством программа сами пользуемся  </li>
+                    <li> 3. Большинство сылок находяться на яндекс диске и вы можите легко проверить их на наличие троянов  </li>
+
+                </ul>
+
+
+            </div>
+            </div>
+
+          <table style="color:white; " class="table table-bordered">
+            <thead >
+              <tr>
+                <th scope="col">Языки</th>
+                <th scope="col">Требования</th>
+                <th scope="col">Места на диске</th>
+              </tr>
+            </thead>
+           <tbody>
+             <tr>
+               <td><h4> {{article_details.languegesPrograms}} </h4></td>
+               <td><h4> {{article_details.demandPrograms}} </h4></td>
+               <td><h4> {{article_details.memoryPrograms}} </h4></td>
+             </tr>
+           </tbody>
+         </table>
+           </div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+ $('.spoiler-title').click(function(){
+  $(this).parent().children('.spoiler-body').slideToggle();
+  return false;
+ });
+});
+</script>
+{% endblock %}
+
+
